@@ -1,0 +1,26 @@
+.v{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 100px 200px 200px;
+    row-gap: 100px;
+    column-gap: 100px;
+    background: orange;
+    grid-template-areas: "v v v v v";
+}
+.vk{
+    background: blue;
+grid-column:1/3;
+grid-row:1/3 ;
+grid-area: v;
+}
+#virat{
+    position:static;
+    left: 50px;
+    height: 100px;
+    width: 100px;
+    transform: scale(1);
+    background: rgb(160, 18, 18);
+    color: azure;
+    justify-content: center;
+    align-items:center ;
+}
