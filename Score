@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cricket Score Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    #scoreBoard {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px #aaa;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    .out {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏏 Cricket Score Game</h1>
+
+  <div id="scoreBoard">
+    <h2>Total Score: <span id="score">0</span></h2>
+    <h3>Wickets: <span id="wickets">0</span></h3>
+    <h3>Balls: <span id="balls">0</span></h3>
+    <h3>Last Ball: <span id="lastBall">-</span></h3>
+    <button onclick="playBall()">Play Ball</button>
+  </div>
+
+  <script>
+    let score = 0;
+    let wickets = 0;
+    let balls = 0;
+
+    function playBall() {
+      if (wickets >= 10 || balls >= 30) {
+        alert("Game Over! Refresh to play again.");
+        return;
+      }
+
+      const result = Math.floor(Math.random() * 8); // 0 to 7 (7 = OUT)
+      balls++;
+
+      if (result === 7) {
+        wickets++;
+        document.getElementById("lastBall").innerHTML = '<span class="out">OUT</span>';
+      } else {
+        score += result;
+        document.getElementById("lastBall").textContent = result;
+      }
+
+      document.getElementById("score").textContent = score;
+      document.getElementById("wickets").textContent = wickets;
+      document.getElementById("balls").textContent = balls;
+    }
+  </script>
+
+</body>
+</html>
