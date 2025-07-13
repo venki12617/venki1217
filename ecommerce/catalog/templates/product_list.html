@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Catalog</title>
+    <style>
+        img { max-width: 250px; height: 200px;}
+        .product { border: 1px solid rgb(31, 18, 18); padding: 10px; margin: 10px; display: inline-block; border-radius:5px; }
+        .headd{
+            text-align: center;
+            background-color: rgb(223, 205, 208);
+            font-size:50px;
+            border:2px solid black;
+            border-radius:5px;
+        }
+        .Navbar{
+            background-color: black;
+            color:white;
+            padding:10px;
+            border:2px solid rgb(185, 197, 179);
+            border-radius:5px;
+            display: flex;
+            justify-content: space-evenly;
+            
+        }
+        footer{
+            text-align: center;
+            width:100%;
+            height:40px;
+            background-color: black;
+            color:white;
+            padding:10px;
+            border:2px solid rgb(185, 197, 179);
+            border-radius:5px;
+        }
+        .product:hover img{
+            border: 2px double rgb(194, 49, 49); 
+            border-radius: 5px;
+            transform: scale(20deg);
+        }
+        .product:hover{
+            border: 2px solid rgb(215, 218, 44); 
+
+        }
+       
+    </style>
+</head>
+<body bgcolor="skyblue">
+    <div class="headd">
+        <header>
+
+            <p>MTIE CANTEEN</p>
+        </header>
+    </div>
+    <div class="Navbar">
+        <div class="home">
+            <p>Home</p>
+        </div>
+        <div class="about">
+            <p>About</p>
+        </div>
+        <div class="more">
+            <p>More</p>
+        </div>
+        
+        
+    </div>
+    
+    {% for product in products %}
+        <div class="product">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% endif %}
+            <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+            <p>Rs.{{ product.price }}</p>
+        </div>
+        
+    {% endfor %}
+    <div>
+        <footer>
+            Owner:Venki R
+        </footer>
+    </div>
+    
+</body> 
